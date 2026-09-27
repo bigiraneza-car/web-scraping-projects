@@ -5,7 +5,7 @@ async function scrapeALUCanvas() {
 const browser = await chromium.launch({ headless: false });
 const page = await browser.newPage();
 console.log('Navigating to ALU Canvas...');
-await page.goto('https://instructure.com');
+await page.goto('https://alueducation.instructure.com/');
 // 2. PAUSE AND HANDOFF TO STUDENT FOR GOOGLE AND 2FA LOGIN
 console.log('\n======================================================');
 console.log('ACTION REQUIRED: Please log in using your student Google account.');
@@ -13,7 +13,9 @@ console.log('Complete any 2FA prompts on your mobile device if required.');
 console.log('======================================================\n');
 // The script will wait indefinitely (timeout: 0) until it detects that the browser
 // has successfully redirected past the login screens and onto the Canvas dashboard.
-await page.waitForURL('**/courses**', { timeout: 0 });
+// await page.waitForURL('**/courses**', { timeout: 0 });
+//replaced waitForURL with waitForSelector because the dashboard link doesn't contain any ./courses.
+await page.waitForSelector('.ic-DashboardCard' , { timeout: 0 });
 console.log('Login verified! Arrived at the Canvas Dashboard.');
 console.log('Navigating to the "Frontend Web development" course...');
 // 3. Navigate into the Course and to the Assignments tab
