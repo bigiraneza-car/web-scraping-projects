@@ -50,8 +50,7 @@ dueDate: dueDate.trim().replace(/\n/g, ' '),
 status: status.trim().replace(/\n/g, ' ')
 });
 } catch (error) {
-// If a single row parsing fails, skip it instead of breaking the entire script
-execution loop
+// If a single row parsing fails, skip it instead of breaking the entire script execution loop
 continue;
 }
 }
