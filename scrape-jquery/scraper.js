@@ -1,8 +1,6 @@
 const fs = require('fs');
-const {
-    jsdom
-} = require('jsdom');
-const $ = require('jquery/factory')(new jsdom.JSDOM().window);
+const {JSDOM} = require('jsdom');
+const $ = require('jquery')(new JSDOM("").window);
 
 
 function scrapeData() {
@@ -13,7 +11,7 @@ function scrapeData() {
   for (const child of children) {
     const title = child.text();
     const link = child.attr("href");
-    console.log(Title: ${title}, Link: ${link});
+    console.log('Title: ${title}, Link: ${link}');
   }
 }
 
