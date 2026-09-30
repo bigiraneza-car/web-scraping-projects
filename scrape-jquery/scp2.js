@@ -1,0 +1,6 @@
+const fs = require('fs');
+const {JSDOM} = require('jsdom');
+const $ = jqueryFactory(new JSDOM("").window);
+
+const dom = fs.readFileSync('dom.html', 'utf-8');
+const titles = $(dom).find('.ig-title');
